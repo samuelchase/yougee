@@ -1,0 +1,77 @@
+application: nearwoo
+version: beta
+
+runtime: python27
+api_version: 1
+instance_class: F4_1G
+threadsafe: yes
+automatic_scaling:
+  min_idle_instances: 1
+  max_idle_instances: 3
+  min_pending_latency: 150ms
+  max_pending_latency: automatic
+  max_concurrent_requests: 16
+
+default_expiration: '0s'
+
+builtins:
+- remote_api: on
+- deferred: on
+- appstats: on
+
+inbound_services:
+- warmup
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /yougee
+  static_dir: yougee  
+- url: /gae_mini_profiler/static
+  static_dir: gae_mini_profiler/static
+- url: /gae_mini_profiler/.*
+  script: gae_mini_profiler.main.application
+- url: /app_static
+  static_dir: app/
+- url: /static
+  static_dir: static/
+# interactive console within app - yay!
+- url: /_ah/admin.*
+  script: google.appengine.ext.admin.application
+  login: admin
+- url: /sf.*
+  script: salesforce.app
+  login: admin
+# Hacks to force authentication.
+- url: /admin.*
+  script: admin.app
+  login: admin
+- url: /e.*
+  script: main.app
+  login: admin
+- url: /x.*
+  script: x.app
+  secure: always
+- url: .*
+  script: main.app
+
+libraries:
+- name: pycrypto
+  version: latest
+- name: numpy
+  version: latest
+- name: PIL
+  version: '1.1.7'
+- name: webapp2
+  version: '2.5.2'
+- name: markupsafe
+  version: '0.15'
+- name: setuptools
+  version: '0.6c11'
+- name: lxml
+  version: '2.3'
+- name: jinja2
+  version: latest
+

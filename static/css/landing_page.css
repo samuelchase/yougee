@@ -1,0 +1,135 @@
+/*!!!!!!!!!!!!!!!!!!!!!!! Mobile landing page styles!!!!!!!!!!!!!!!!!!!*/
+.mobile_header{
+  width: 320px;
+  height:50px;
+  background:#f16548;
+  color: #fff;
+  position: relative;
+
+}
+.mobile_header .cat-icn{
+  position: absolute;
+  margin: 10px;
+}
+.divider{
+  position: absolute;
+  height: 30px;
+  width: 0;
+  top: 10px;
+  left: 50px;
+  border-right:1px solid #ea3224;
+  border-left:1px solid #fff;
+}
+.mobile_header h2 {
+  position: absolute;
+  font-size:16px;
+  font-weight: bold;
+  margin: 0;
+  top: 13px;
+  left: 60px;
+}
+.mobile_container{
+  width: 320px;
+  margin: 0 auto;
+}
+.business_info{
+  width: 320px;
+  padding-bottom:10px;
+}
+.lp-image-container{
+  height:215px;
+  width: 320px;
+  background: #c9edff;
+  overflow: hidden;
+}
+
+.business_deal{
+/*  position:absolute;*/
+  width: 320px;
+  height: 40px;
+  text-align: center;
+  margin: 0px;
+  padding-top:10px;
+  background: #515a67;
+  color:#fff;
+  font-weight: bold;
+}
+/*.business_deal p{
+  font-weight: bold;
+  font-size: 14px;
+}*/
+.tagline{
+/*  position: relative;
+  top:35px;*/
+  padding-top: 15px;
+  height: 48px;
+  width: 320px;
+  background: #f3f3f3;
+  text-align: center;
+  color: #515a67;
+ }
+ .tagline p{
+/*  position: relative;
+  top: 10px;
+  margin: 0px auto;*/
+ }
+ .business_hours{
+  height: 65px;
+  width: 320px;
+  text-align: center;
+ }
+ .business_hours h4{
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  color: #515a67;
+  position: relative;
+  top: 5px;
+  
+}
+.business_hours ul {
+  text-align: center;
+  margin: 10px auto;
+  padding:0;
+  position:relative;
+  color:#7d7d7d;
+  list-style:none;
+  font-weight: bold;
+  font-size: 14px;
+  width: 320px;
+}
+
+.business_action{
+  width: 320px;
+  height: auto;
+}
+.business_action img{
+  width:320px;
+  margin-top: 5px;
+}
+.review{
+  color: #2f7dc0;
+  border-bottom: 1px solid #e7ebed;
+}
+.business_action h4{
+  font-weight: bold;
+  font-size: 14px;
+  color: #515a67;
+
+ }
+ .review p{
+  color: #7d7d7d;
+ }
+ .business_review_one{
+    border-bottom: 1px solid #e7ebed;
+ }
+ .listing-img-holder{
+  height: 50px;
+  width: 50px;
+  background: #f6921e;
+  margin:  0 10px;
+  float:left;
+ }
+ .listing-content{
+    margin-top: 20px;
+ }

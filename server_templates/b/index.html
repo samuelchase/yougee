@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="img/nearwoo_favicon.png">
+    <title>NearWoo</title>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="css/angular-ui.css" />
+    <link rel="stylesheet" href="css/angular-slider.min.css" />
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/page.css"/>
+    <link rel="stylesheet" href="css/pricing.css"/>
+    <link rel="stylesheet" href="css/fonts.css"/>
+    <link rel="stylesheet" href="css/buttons.css"/>
+    <link rel="stylesheet" href="css/zocial.css"/>
+    <link rel="stylesheet" href="css/select2.css">
+
+<style type="text/css">
+    #footer{
+  width:100%;
+  height:300px;
+  margin-left: 0;
+  background: #525a67;
+  color:#dedfe1;
+}
+#footer h4{
+  color:#dedfe1;
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 4px;
+}
+#footer a{
+  color:#fff;
+  font-size: 13px;
+  line-height: 10px;
+  cursor: pointer;
+  padding: 5px;
+}
+#footer_container
+.email{
+  color:#52bcc6;
+}
+#footer a:hover{
+  background-color: #525a67;
+  color: #fcbb75
+}
+#footer_container{
+  padding-top:10px;
+  width:1000px;
+
+}
+#footer-first{
+  margin-top: 0px;
+  margin-left: 150px;
+  width:250px;
+  float: left;
+}
+#footer-second{
+  /*padding-right: -30px;*/
+  width:260px;
+  padding-left: 30px;
+  margin: 0px;
+  border-left: 1px solid #646b76;
+  float: left
+}
+#footer-second a{
+ padding: 0;
+ line-height: 1px;
+}
+#footer-third{
+  margin: 0px;
+  width: 250px;
+  padding-left: 30px;
+  border-left: 1px solid #646b76;
+  height: 230px;
+  float:left;
+}
+.social-nav{
+  width: 100%;
+  float: left;
+  margin: 0 0 0 -5px;
+  padding: 0;
+  list-style: none;
+}
+.social-nav li{
+  float:left;
+  /*padding-right: 10px;*/
+  margin-right: 10px;
+}
+.social{
+  display: block;
+  width: 30px;
+  height: 30px;
+  text-indent: -9999px;
+}
+.social:hover {
+  background-position: center;
+}
+.social.current {
+  background-position: bottom;
+}
+.facebook{
+  background: url('../img/footer_fb_icon.png') no-repeat top;
+}
+.twitter{
+  background: url('../img/footer_tw_icon.png') no-repeat top ;
+}
+.linkedIn{
+  background: url('../img/footer_li_icon.png') no-repeat top ;
+}
+.purple_link {
+  color:#8681bc;
+}
+.purple_link:hover{
+  color:#f7941e;
+}
+.privacy-policy{
+  height: 50px;
+  color: #6e717a;
+  text-align: center;
+  font-size: 12px;
+  width:100%;
+  background: #414752;
+}
+.privacy-policy p{
+  position: relative;
+  font-size: 12px;
+  top: 15px;
+  padding-bottom: 0;
+}
+.privacy-policy a{
+  font-size: 12px;
+  color: #6e717a;
+  text-decoration:underline;
+}
+
+
+
+</style>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,700,600,100' rel='stylesheet' type='text/css'> -->
+    <link href="https://d218iqt4mo6adh.cloudfront.net/assets/widget_embed_191.css" media="screen" rel="stylesheet" type="text/css" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../docs-assets/js/html5shiv.js"></script>
+      <script src="../../docs-assets/js/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+	     [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	     display: none !important;
+	     }
+   	</style>
+<!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
+b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+mixpanel.init("779909c76c8d76b0f10dadf480e50885", {set_pageview: false});
+
+</script><!-- end Mixpanel -->
+
+
+
+  </head>
+
+  <body class="ng-cloak">
+
+
+	  <!--mobile view directive-->
+	  <div class="visible-phone">
+	      <nw-mobileapp></nw-mobileapp>
+	  </div>
+	  <!--end mobile view directive-->
+
+
+	  <div class="hidden-phone">
+	    <div ng-controller="mainNavCtrl">
+	  		<div id="main_frame">
+		      <!-- Fixed navbar -->
+		      	<div class="navbar navbar-default navbar-fixed-top" id="main_header">
+		        	<div class="container" style="width:100%;">
+
+	           			<div class="logo" ><a href="{{home_page}}" id="home" style='margin-left:0px margin-top:-5px'>
+	           				<div class='header-logo' style="margin:none;"></div></a>
+	           			</div>
+			             <ul class="nav navbar-nav pull-right" style="margin-right:50px;">
+                                              <li id="nav_items" style="padding-right:5px;" ng-repeat="nav in main_nav" ng-class="{'active': selected_id == nav.id}"  ng-click="goto(nav)"><a  id="{{nav.id}}">{{nav.name}}</a></li>
+
+                                            <li ng-hide="logged_in"><button class="btn btn-warning  round_corners " ng-click="goto_search();" style=" margin-top: 19px;  width:136px; height:40px; margin-left:15px;" analytics-on="click" analytics-category="account_creation" analytics-label="signup_btn" analytics-event="signup" name="signup_btn">SIGN UP</button></li>
+                                            <li class="my_account_btn" ng-show="logged_in"><a ng-href="/app/{{advertiser_key}}" class="btn btn-primary round_corners" style=" margin-top:19px; margin-left:15px; padding: 10px 14px; color:#fff;" analytics-on analytics-category="website" analytics-label="my account btn" analytics-event="my_account_btn">MY ACCOUNT</a></li>
+                                    </ul>
+	        		</div>
+	      		</div>
+				<!-- /container -->
+				<div class="container" ng-view=""></div>
+
+                 <div style='height:130px;'>
+          <div style='height:130px; background-image: url("../b/img/footer.png")'>
+           
+          </div>
+        </div>
+       <div id="footer" class="container row-fluid">
+                        <div id="footer_container">
+
+                                  <div id="footer-first">
+                                      <!-- Footer Navigation -->
+                                           <ul class="nav pull-left" style="margin-left:0; padding-right:50px">
+                                                <h3 style='font-size:13px; margin-left:4px; color:#e7ebed'><strong>NEARWOO</strong></h3>
+
+                                                <li><a style='font-size:13px; color:#b6b9bd' href='/'>Home</a></li>
+                                                <li><a style='font-size:13px; color:#b6b9bd' href='#/pricing'>Pricing</a></li>
+                                                <li><a style='font-size:13px; color:#b6b9bd' href='#/learn'>Learn</a></li>
+                                                <li><a style='font-size:13px; color:#b6b9bd' href='#/help'>FAQ</a></li>
+                                                <li><a style='font-size:13px; color:#b6b9bd' href='#/partners'>Partners</a></li>
+
+                                            </ul>
+                                            <ul class="nav pull-left" style='margin-left:20px' >
+                                                <h3 style='font-size:13px; margin-left:4px; color:#e7ebed'><strong>ABOUT</strong></h3>
+                                                
+                                                <li><a style='font-size:13px; color:#b6b9bd' href='#/about' ng-model="active">Team</a></li>  
+                                                <li><a style='font-size:13px; color:#b6b9bd' href='http://nearwoo.co'>Blog</a></li>
+                                                <li><a style='font-size:13px; color:#b6b9bd' href="http://www.linkedin.com/company/pagewoo" target="_blank">Jobs</a></li>
+                                                <li><a style='font-size:13px; color:#b6b9bd' href='#/press'>Press</a></li>
+                                                <li><a style='font-size:13px; color:#b6b9bd' href='#/help'>Contact</a></li>
+                                                
+
+                                            </ul>
+                                    </div>
+
+                             <!-- Maps and Emails -->
+                                  <div id="footer-second">
+                                        <h3 style='font-size:13px; color:#e7ebed'><strong>CONTACT</strong></h3>
+                                        <a class="" href="https://www.google.com/maps/preview#!data=!1m4!1m3!1d3372!2d-118.4966819!3d34.0153971!4m36!3m16!1m0!1m5!1s225+Santa+Monica+Blvd%2C+Santa+Monica%2C+CA+90401!2s0x80c2a4cfe7eeca0f%3A0x30d10e75e4ab9213!3m2!3d34.0153971!4d-118.4966819!3m8!1m3!1d3372!2d-118.4966819!3d34.0153971!3m2!1i1423!2i783!4f13.1!5m16!2m15!1m14!1s0x80c2a4cfe7eeca0f%3A0x30d10e75e4ab9213!2s225+Santa+Monica+Blvd+4th+Floor+Santa+Monica%2C+CA+90401!3m8!1m3!1d3372!2d-118.4966819!3d34.0153971!3m2!1i1423!2i783!4f13.1!4m2!3d34.0153971!4d-118.4966819!7m1!3b1&fid=0" target="_blank">
+                                            <p style='font-size:13px; color:#b6b9bd' style="margin-left:0;">225 Santa Monica Blvd<br>
+                                                4th Floor<br>
+                                                Santa Monica, CA 90401</p></a>
+
+                                        
+                                        <a style='font-size:10px; color:#b6b9bd; width:100%;' class="" href="mailto:help@nearwoo.com?subject=Help me please" ><p style="">help@nearwoo.com</p></a>
+                                    
+                                        <a style='font-size:10px; color:#b6b9bd' class="" href="mailto:partners@nearwoo.com?subject=Potential NearWoo partner" ><p style="">partners@nearwoo.com</p></a>
+
+                                    </div>
+                              
+                              <!-- Social Media Links -->
+                                    <div  id="footer-third">
+                                      <h3 style='font-size:13px; color:#e7ebed'><strong>CONNECT</strong></h3>
+                                          <ul style="list-style:none; margin:0px; padding:0px;">
+                                            <li style="margin-bottom:2px;"><a href="http://nearwoo.co" target="_blank" style="padding:0px;"><img src="/static/img/footer_blog.png"> <span style="padding-left:10px;">Blog</span></a></li>
+                                            <li style="margin-bottom:2px;"><a href="https://www.facebook.com/adsnearwoo" target="_blank" style="padding:0px;"><img src="/static/img/footer_facebook.png"><span style="padding-left:13px;">Facebook</span></a></li>
+                                            <li style="margin-bottom:2px;"><a href="https://twitter.com/adsnearwoo"  target="_blank" style="padding:0px;"><img src="/static/img/footer_twitter.png"> <span style="padding-left:10px;">Twitter</span></a></li>
+                                            <li style="margin-bottom:2px;"><a ng-href="http://www.linkedin.com/company/pagewoo" target="_blank" style="padding:0px;"><img src="/static/img/footer_linkedin.png"><span style="padding-left:13px;">LinkedIn</span></a></li>
+                                          </ul>
+                                    </div>
+                        </div>
+
+                    </div><!-- /footer-container -->
+                     <div class="privacy-policy clear-fix" >
+                                <p>&copy; 2014 NearWoo - <a href="/b/#/privacy">Privacy Policy</a> - <a href="/b/#/terms">Terms of Service</a></p>
+                        </div>
+
+
+
+
+
+
+	     		
+  			</div><!--/Main Frame -->
+  		</div>
+
+
+
+</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.7.min.js"></script>
+    <script src="js/select2.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-slider.min.js"></script>
+    <script src="js/ui-select2.js"></script>
+    <script src="js/ui-bootstrap-0.3.0.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.3.0.min.js"></script>
+    <script src="js/angular-ui-utils/mask.js"></script>
+    <script src="/static/js/analytics/angulartics.js"></script>
+    <script src="/static/js/analytics/angulartics-ga.js"></script>
+    <script src="/static/js/analytics/angulartics-mixpanel.js"></script>
+  	<script src="js/bootstrap.min.js"></script>
+    <script src='js/bootstrap-modal.js'></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyDsIM8o2P-zsYF3j5TcySsra3bF7bP8pfE"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script src="js/bootstrap-scrollspy.js"></script>
+    <script src="js/marker_with_label.js"></script>
+<!-- <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>-->
+  	<script type="text/javascript" src="https://js.stripe.com/v1/"></script>
+    <script src="js/geo-min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/homeneighborhood.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/guide.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/knowledgebase.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/greensock/TweenMax.js"></script>
+	<script src="js/greensock/TimelineMax.js"></script>
+	<script src="js/greensock/plugins/CSSPlugin.js"></script>
+	<script src="js/greensock/plugins/CSSRulePlugin.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42464321-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+        <!-- Crazy Egg-->
+    <script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0021/0255.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+    </script>
+        <!-- Crazy Egg Ends -->
+
+    <script type="text/javascript">
+   (function(d,s,i,r) {
+     if (d.getElementById(i)){return;}
+     var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+     n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/415359.js';
+     e.parentNode.insertBefore(n, e);
+   })(document,"script","hs-analytics",300000);
+ </script>
+
+
+  {! profiler_includes() | safe !}
+
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title>NearWoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+ 
+
+</head>
+
+<body>
+
+    <script src="js/jquery-1.7.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+<script>
+
+var QueryString = function () {
+  // This function is anonymous, is executed immediately and 
+  // the return value is assigned to QueryString!
+  var query_string = {};
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+      // If first entry with this name
+    if (typeof query_string[pair[0]] === "undefined") {
+      query_string[pair[0]] = pair[1];
+      // If second entry with this name
+    } else if (typeof query_string[pair[0]] === "string") {
+      var arr = [ query_string[pair[0]], pair[1] ];
+      query_string[pair[0]] = arr;
+      // If third or later entry with this name
+    } else {
+      query_string[pair[0]].push(pair[1]);
+    }
+  } 
+    return query_string;
+} ();
+
+
+$(function() {
+
+  var path = window.location + ''
+  //console.log('window.location ' + path)
+
+  var repidx = path.lastIndexOf('/')
+  var codeidx = path.indexOf('?')
+  
+  //console.log('repidx ' + repidx)
+  //console.log('codeidx ' + codeidx)
+    
+
+  if (codeidx == -1) {
+
+  }
+  var url = path.substr(window.location.lastIndexOf('/'), window.location.indexOf('?'))
+  window.location = 'http://nearwoo.appspot.com/ ?code=' + QueryString.code
+
+
+});
+
+</script>
+{! profiler_includes() | safe !}
+
+</body>
+</html>

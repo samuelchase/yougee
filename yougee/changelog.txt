@@ -1,0 +1,69 @@
+Version 1.7
+	* [FIXED] .home-pattern in style.css
+
+Version 1.6
+	* [NEW] Smooth Scroll Script (at the bottom of scripts.js)
+	
+Version 1.5
+
+	* [NEW] Smooth Scroll for mouse-wheel (Files changed: scripts.js) 
+					( at the bottom of scripts.js is added new Smooth Scroll script )
+
+	* [NEW] Twitter Feed (Files changed: scripts.js, jquery list in html files)  
+					( added tweetie.js in js folder )
+					( added api folder )
+
+	* [CHANGED] Documentation file updated.
+	
+	* [FIXED] Collapsed Navbar scrolling on touch devices (Files changed: scripts.js, labeled as Collapsed Navbar Scrolling) 
+
+	* [NEW] Added Shop html files which are representation of what will be in WordPress version.
+
+	* [NEW] Added Home Page Slider html file with top and bottom Header
+
+	* [NEW] Added Home Page Video html file with top appearing Header
+
+Version 1.4
+	* [CHANGED] Project page links in loadMore.html (Files changed: loadMore.html)
+	
+	* [CHANGED] Removed Smooth Scroll for mouse-wheel (Files changed: scripts.js)
+
+	* [CHANGED] Hover action for Team section and Portfolio section (Files changed: style.css, line 799)
+	
+ 	* [FIXED] Touch action for Team section and Portfolio section (Files changed: style.css, line 799)
+
+Version 1.3
+	* [NEW] Added Tabs in Shortcodes, light and Dark versions (Files changed: scripts.js, style.css, all colors css files.)
+
+	* [NEW] Smooth Scroll to Anchor with Easing effect (Files changed: scripts.js)
+
+	* [CHANGED] Fixed Active Menu Item on Page Scroll (Files changed: scripts.js)
+
+Version 1.2
+	* [NEW] Active Menu Item on Page Scroll (Files changed: scripts.js, style.css, all colors css files.)
+
+	* [NEW] Flexslider with auto animation in portfolio projects desctiptions. (Files changed: added script at the top of all project.html files and replaced slider)
+
+	* [CHANGED] Changed entrance of AJAX project description from left to bottom and added opacity (Files changed: cubeportfolio.css)
+
+Version 1.1
+
+	* [NEW] View portfolio projects desctiption usign AJAX. Added new projects html files, loadMore.html. (Files changed: scripts.js, Files added: cubeportfolio.css, jquery.cubeportfolio.min, Deleted files: old projects folder)
+
+	* [NEW] Added a whole new Portfolio plugin which can contain unlimited number of items, adding items usign AJAX, Responsive built-in lightbox with support for images, youtube and vimeo, Dropdown filtering, Use with any HTML content. (Files added: cubeportfolio.css, jquery.cubeportfolio.min, Files changed: scripts.js, style.css, work section in html files,   Deleted files: jquery.magnific-popup.min.js, jquery.mixitup.min.js, 
+
+	* [NEW] Added home-4-bottom-header.html (Navbar at the bottom of viewport) Files changed: scripts.js, style.css.
+
+	* [NEW]	Added home-5-top-header.html (Appearing Navbar at the top of viewport) Files changed: scripts.js, style.css.
+	
+	* [NEW] Links to stylesheets in head section and jQuery plugins scripts at the bottom of every .html file.
+
+	* [NEW] Header (navbar) transparency. (Files changed: scripts.js, style.css.)
+
+	* [REMOVED] Old portfolio in html files, jquery.magnific-popup.min.js, jquery.mixitup.min.js, twitter_feed folder, jquery.tweet.js, all twitter code from html files.
+
+
+
+Version 1.0
+
+	* Initial Release

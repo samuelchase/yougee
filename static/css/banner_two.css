@@ -1,0 +1,214 @@
+body{
+    background-color:#000;
+    color: #fff;
+    font-family: "Open Sans" Sans-Serif;
+}
+ 
+.banner{
+  height: 50px;
+  width: 320px;
+  position: relative;
+  margin:0 auto;
+  padding:0;
+  background:#3aa775;
+  overflow: hidden;
+}
+#mask{
+  position: absolute;
+  height:50px;
+  width: 320px;
+  background:transparent;
+  opacity:0;
+  z-index:8;
+}
+#panel_1{
+    background:#3aa775;
+    position: absolute;
+    margin:0;
+    padding:0;
+    height: 50px;
+    width: 320px;
+}
+#panel_2 {
+    background:#fff;
+    position: absolute; 
+    height: 50px;
+    width: 320px;
+    top: 50px;
+    z-index:30;
+}
+#banner_biz_name, #banner_bottom_line, #banner_bottom_line2{
+  position: absolute;
+  top: -1px;
+  left: 70px;
+  font-size: 16px;
+  text-shadow: 1px 1px 1px #272727;
+  z-index: 1;
+}
+.ban-icn{
+  position: absolute;
+  height:30px;
+  width:30px;
+  margin:0;
+  padding:0;
+  top: 8px;
+  left:13px;
+  z-index:20;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px; /* future proofing */
+  -khtml-border-radius: 50px; /* for old Konqueror browsers */
+}
+.arts{
+  background: #1ea1db url('../img/icn/category_icons.png') 0px 0px no-repeat;
+  border: 3px solid #2f7dc0;
+}
+.auto{
+  background: #3aa284 url('../img/icn/category_icons.png') -28px 0px no-repeat;
+  border: 3px solid #1c7d64;
+}
+.busi{
+  background: #ec1651 url('../img/icn/category_icons.png') -56px 0px no-repeat;
+  border: 3px solid #ae023b;
+}
+.car{
+  background: #a44685 url('../img/icn/category_icons.png') -84px 0px no-repeat;
+  border: 2px solid #762c5f;
+}
+.edu{
+  background: #7fcaad url('../img/icn/category_icons.png') -111px 0px no-repeat;
+  border: 2px solid #3aa284;
+}
+.fam{
+  background: #f16548 url('../img/icn/category_icons.png') -139px 0px no-repeat;
+  border: 2px solid #ec1651;
+}
+.food{
+  background: #2f7dc0 url('../img/icn/category_icons.png') -195px 0px no-repeat;
+  border: 2px solid #485e87;
+}
+.health{
+  background: #8885bf url('../img/icn/category_icons.png') -167px 0px no-repeat;
+  border: 2px solid #645e97;
+}
+
+.hobby{
+  background: #f6921e url('../img/icn/category_icons.png') -223px 0px no-repeat;
+  border: 2px solid #f16548;
+}
+
+.home{
+  background: #e23d84 url('../img/icn/category_icons.png') -251px -1px no-repeat;
+  border: 2px solid #ad2361;
+}
+
+.law{
+  background: #485e87 url('../img/icn/category_icons.png') -279px 0px no-repeat;
+  border: 2px solid #2f7dc0;
+}
+
+.news{
+  background: #52bbc5 url('../img/icn/category_icons.png') -307px 0px no-repeat;
+  border: 2px solid #3a8d95;
+}
+
+/*personal finance*/
+.finance{
+  background: #485e87 url('../img/icn/category_icons.png') -335px 0px no-repeat;
+  border: 2px solid #2f7dc0;
+}
+
+.pet{
+  background: #2f7dc0 url('../img/icn/category_icons.png') -363px 0px no-repeat;
+  border: 2px solid #485e87;
+}
+.real{
+  background: #52bbc5 url('../img/icn/category_icons.png') -391px 0px no-repeat;
+  border: 2px solid #3a8d95;
+}
+
+.science{
+  background: #f6921e url('../img/icn/category_icons.png') -419px 0px no-repeat;
+  border: 2px solid #f16548;
+}
+
+.shop{
+  background: #a44685 url('../img/icn/category_icons.png') -447px 0px no-repeat;
+  border: 2px solid #762c5f;
+}
+
+.society{
+  background: #e23d84 url('../img/icn/category_icons.png') -475px 0px no-repeat;
+  border: 2px solid #ad2361;
+}
+
+.sprt{
+  background: #ec1651 url('../img/icn/category_icons.png') -503px 0px no-repeat;
+  border: 2px solid #ae023b;
+}
+
+.style{
+  background: #8885bf url('../img/icn/category_icons.png') -531px 0px no-repeat;
+  border: 2px solid #645e97;
+}
+
+.tech{
+  background: #f16548 url('../img/icn/category_icons.png') -559px 0px no-repeat;
+  border: 2px solid #ec1651;
+}
+
+.trav{
+  background: #7fcaad url('../img/icn/category_icons.png') -587px 0px no-repeat;
+  border: 2px solid #3aa284;
+}
+
+.other{
+  background: #7fcaad url('../img/icn/category_icons.png') -587px 0px no-repeat;
+  border: 2px solid #3aa284;
+}
+
+#banner_divider{
+    height:30px;
+    width:1px;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #1c7c63;
+    position: absolute;
+    top: 10px;
+    left:58px;
+    z-index:10;
+}
+.action{
+  color: #000;
+}
+
+.action p{
+  margin: 5px;
+  float: left;
+}
+.action_button{
+  height: 50px;
+  width: 320px;
+}
+button{
+    border: none;
+    height: 40px;
+    width: 95px;
+    padding: 0;
+    color:#fff;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-right: 5px;
+    float: right;
+}
+.call{
+  background: url('../img/callnow_95x40.png') no-repeat;
+  padding: 0;
+}
+.web{
+  background: url('../img/visitwebsite_95x40.png') no-repeat;
+  padding: 0;
+}
+.map{
+  background: url('../img/getdirections_95x40.png') no-repeat;
+  padding: 0;
+}

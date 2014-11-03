@@ -1,0 +1,169 @@
+<!doctype html>
+<html ng-app="nearApp">
+  <head>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/app_static/css/style.css"/>
+    <link rel="stylesheet" href="/static/css/angular-slider.min.css"/>
+    <link rel="stylesheet" href="/app_static/css/d3.css"/>
+    <link rel="stylesheet" href="/static/css/d3-bootstrap-plugin.css" />
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
+b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+mixpanel.init("779909c76c8d76b0f10dadf480e50885", {set_pageview: false});
+
+</script><!-- end Mixpanel -->
+
+    
+
+  </head>
+
+    <body style="margin-top:75px;">
+        <div  class=" clearfix" id="wrap"> 
+
+        <!-- start main nav dir-->
+        <nw-mainnav></nw-mainnav>
+        <!-- end main nav dir -->
+
+        <!--start ng-view dir-->
+        <div class='container' style='padding-left:50px; padding-right:0px'>
+            <div ng-view style="margin-top:50px;"></div>
+        </div>
+        
+        <!--end ng-view dir-->
+
+        <!--start footer dir-->
+        <!-- /container -->
+        <div id="push"></div>
+
+        </div> <!-- end wrap -->
+        <div id="bottom_image"></div>
+       <div id="footer" class="container row-fluid">
+                        <div id="footer_container">
+
+                                  <div id="footer-first">
+                                      <h3 style='font-size:15px; margin-left:4px'><strong>Navigate</strong></h3><!-- Footer Navigation -->
+                                           <ul class="nav pull-left" style="margin-left:0; padding-right:50px">
+                                                <li><a href="/b/#/home" target="_blank">Home</a></li>
+                                                <li><a href="/b/#/pricing" target="_blank">Pricing</a></li>
+                                                <li><a href="/b/#/learn" target="_blank">Learn</a></li>
+                                                <li><a href="/b/#/help" target="_blank">FAQ</a></li>
+                                                <li><a href="http://nearwoo.co" target="_blank">Blog</a></li>
+                                                <li><a href="/b/#/privacy" target="_blank">Privacy</a></li>
+                                            </ul>
+                                            <ul class="nav pull-left" >
+                                                <li><a href="/b/#/partners" target="_blank">Partners</a></li>
+                                                <li><a href="http://www.linkedin.com/company/pagewoo" target="_blank">Jobs</a></li>
+                                                <li><a href="/b/#/press" target="_blank">Press</a></li>
+                                                <li><a href="/b/#/contact" target="_blank">Contact</a></li>
+                                                <li><a href="/b/#/about" target="_blank">About</a></li>
+                                            </ul>
+                                    </div>
+
+                             <!-- Maps and Emails -->
+                                  <div id="footer-second">
+                                        <h3 style='font-size:17px'>Contact</h3>
+                                        <a class="email" href="https://www.google.com/maps/preview#!data=!1m4!1m3!1d3372!2d-118.4966819!3d34.0153971!4m36!3m16!1m0!1m5!1s225+Santa+Monica+Blvd%2C+Santa+Monica%2C+CA+90401!2s0x80c2a4cfe7eeca0f%3A0x30d10e75e4ab9213!3m2!3d34.0153971!4d-118.4966819!3m8!1m3!1d3372!2d-118.4966819!3d34.0153971!3m2!1i1423!2i783!4f13.1!5m16!2m15!1m14!1s0x80c2a4cfe7eeca0f%3A0x30d10e75e4ab9213!2s225+Santa+Monica+Blvd+4th+Floor+Santa+Monica%2C+CA+90401!3m8!1m3!1d3372!2d-118.4966819!3d34.0153971!3m2!1i1423!2i783!4f13.1!4m2!3d34.0153971!4d-118.4966819!7m1!3b1&fid=0" target="_blank">
+                                            <p style='font-size:13px' style="margin-left:0;">225 Santa Monica Blvd<br>
+                                                4th Floor<br>
+                                                Santa Monica, CA 90401</p></a>
+
+                                        <h4>Support</h4>
+                                        <a style='font-size:13px' class="email" href="mailto:help@nearwoo.com?subject=Help me please" ><p style="margin-left:0;">help@nearwoo.com</p></a>
+                                        <h4>Partners</h4>
+                                        <a style='font-size:13px' class="email" href="mailto:partners@nearwoo.com?subject=Potential NearWoo partner" ><p style="margin-left:0;">partners@nearwoo.com</p></a>
+
+                                    </div>
+                              
+                              <!-- Social Media Links -->
+                                    <div  id="footer-third">
+                                      <h3 style='font-size:17px'>Be Social</h3>
+                                          <ul class="social-nav">
+                                            <a href="https://www.facebook.com/adsnearwoo" target="_blank"><li class="social facebook" >facebook</li></a>
+                                            <a href="https://twitter.com/adsnearwoo"  target="_blank"><li class="social twitter">twitter</li></a>
+                                            <a ng-href="http://www.linkedin.com/company/pagewoo" target="_blank" ><li class="social linkedIn">linkedIn</li></a>
+                                          </ul>
+                                    </div>
+                        </div>
+
+                    </div><!-- /footer-container -->
+                     <div class="privacy-policy clear-fix" >
+                                <p>&copy; 2014 NearWoo - <a href="/b/#/privacy">Privacy Policy</a> - <a href="/b/#/terms">Terms of Service</a></p>
+                        </div>
+<!--     <div id="footer" class="container row-fluid"></div> -->
+    <!-- /footer-container -->
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
+    <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.9/angular-route.min.js"></script>
+    <script src="/static/js/analytics/angulartics.js"></script>
+    <script src="/static/js/analytics/angulartics-ga.js"></script>
+    <script src="/static/js/analytics/angulartics-mixpanel.js"></script>
+    <script src="/static/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
+    <script src="/static/js/angular-slider.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyDsIM8o2P-zsYF3j5TcySsra3bF7bP8pfE"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="/static/js/angular-charts.min.js"></script>
+    <script src="/static/js/d3-bootstrap-plugin.js"></script>
+    {! profiler_includes() | safe !}
+    <script src="/app_static/app.js"></script>
+    <script src="/app_static/js/hover-effects.js"></script>
+     <script src="/app_static/js/filters/nwfilters.js"></script>
+    <script src="/app_static/js/services/nwmapservice.js"></script>
+    <script src="/app_static/js/services/nwcheckoutservice.js"></script>
+    <script src="/app_static/js/services/nwuploadimgservice.js"></script>
+    <script src="/app_static/js/services/services.js"></script>
+    <script src="/app_static/js/directives/directives.js"></script>
+    <script src="/app_static/js/directives/nwactionsdir.js"></script>
+    <script src="/app_static/js/directives/nwcreativedir.js"></script>
+    <script src="/app_static/js/directives/nwblockmap.js"></script>
+    <script src="/app_static/js/directives/d3segmentschart.js"></script>
+    <script src="/app_static/js/directives/d3siteschart.js"></script>
+    <script src="/app_static/js/directives/d3linechart.js"></script>
+    <script src="/app_static/js/controllers/controller.js"></script>
+    <script src="/app_static/js/controllers/advertisercntl.js"></script>
+    <script src="/app_static/js/controllers/accountcntl.js"></script>
+    <script src="/app_static/js/controllers/actionscntl.js"></script>
+    <script src="/app_static/js/controllers/billingcntl.js"></script>
+    <script src="/app_static/js/controllers/categoriescntl.js"></script>
+    <script src="/app_static/js/controllers/checkoutcntl.js"></script>
+    <script src="/app_static/js/controllers/creativecntl.js"></script>
+    <script src="/app_static/js/controllers/earnmorecntl.js"></script>
+    <script src="/app_static/js/controllers/editcampcntl.js"></script>
+    <script src="/app_static/js/controllers/newcampcntl.js"></script>
+    <script src="/app_static/js/controllers/mapcntl.js"></script>
+    <script src="/app_static/js/gague.js"></script>
+    <script src="/app_static/js/controllers/resultscntl.js"></script>
+    <script src="/app_static/js/controllers/landingpagecntl.js"></script>
+
+    <script src="/app_static/js/greensock/TweenMax.js"></script>
+    <script src="/app_static/js/greensock/TimelineMax.js"></script>
+    <script src="/app_static/js/greensock/plugins/CSSPlugin.js"></script>
+    <script src="/app_static/js/greensock/plugins/CSSRulePlugin.js"></script>
+    <script src="/app_static/js/greensock/utils/SplitText.js"></script>
+   <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42464321-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    <!-- Start of Async HubSpot Analytics Code -->
+ <script type="text/javascript">
+   (function(d,s,i,r) {
+     if (d.getElementById(i)){return;}
+     var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+     n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/415359.js';
+     e.parentNode.insertBefore(n, e);
+   })(document,"script","hs-analytics",300000);
+ </script>
+<!-- End of Async HubSpot Analytics Code -->
+    
+  </body>
+</html>
