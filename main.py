@@ -9,26 +9,6 @@ import os
 
 from webapp2_extras import jinja2
 from webapp2_extras.routes import RedirectRoute
-import gae_mini_profiler.templatetags
-
-
-jinja2.default_config['template_path'] = os.path.join(
-    os.path.dirname(__file__),
-    'server_templates'
-)
-jinja2.default_config['globals'] = {
-    'profiler_includes': gae_mini_profiler.templatetags.profiler_includes
-}
-
-if not jinja2.default_config['environment_args']:
-    jinja2.default_config['environment_args'] = {}
-
-
-jinja2.default_config['environment_args'].update(dict(
-    # need to not collide with angular template syntax
-    variable_start_string="{!",
-    variable_end_string="!}"
-))
 
 
 
@@ -38,30 +18,12 @@ class RenderIndexHandler(webapp2.RequestHandler):
     code that powers the site. We use jinja to render it so we can include the
     profiler from gae_mini_profiler"""
     def get(self, directory='yougee'):
-        # force adnucleus.io to redirect to /nucleus/site/index.html
-        if 'adnucleus.io' in self.request.host:
-            self.redirect('/nucleus/site/index.html')
-            return
-        if directory == 'lander':
-            logging.warning(directory)
-            self.redirect('/lander/index.html')
-            return
-
         if directory == 'yougee':
             logging.warning(directory)
             self.redirect('/yougee/index.html')
             return
 
-        if directory == 'smb_lander':
-            self.redirect('/smb_lander/smb_lander.html')
-            logging.error('IN SMB LANDER')
-            return
-
-        logging.info("Rendering %s" % directory)
-        j2 = jinja2.get_jinja2()
-        # Jinja needs path delimited by forward slash
-        rv = j2.render_template('%s/index.html' % directory)
-        self.response.write(rv)
+        self.response.write('directory not found')
 
 
 
