@@ -268,20 +268,7 @@ jQuery(document).ready(function(){
 Google Maps
 =============================================== */
 
-$("#map").gmap3({
-    marker:{     
-	address:"1429 Abbot Kinney Blvd, Venice, CA 90291", 
-	options:{ icon: "img/rsz_greenmarker.png"}},
-    map:{
-    options:{
-	styles: [ {
-	stylers: [ { "saturation":-100 }, { "lightness": 0 }, { "gamma": 0.5 }]},
-	],
-	zoom: 13,
-	scrollwheel:false,
-	draggable: true }
-	}
-	});	
+
 
 /* ==============================================
 Back to Top

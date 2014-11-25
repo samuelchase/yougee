@@ -11,6 +11,41 @@ from webapp2_extras import jinja2
 from webapp2_extras.routes import RedirectRoute
 
 
+import models
+
+class Business(webapp2.RequestHandler):
+    def get(self, attr):
+        result = []
+        businesses = models.Business.gql('where ' + attr + '= :1', True).fetch(1000)
+        for b in businesses:
+            result.append(b.to_dict())
+
+        self.response.out.write(json.dumps(result))
+
+    def post(self):
+        data = json.loads(self.request.body)
+        business = models.Business()
+        business.name = data['name']
+        business.address = data['address']
+        business.phone = data['phone']
+        business.notes = data['notes']
+        business.organic = data['organic']
+        business.seasonal_menu = data['seasonal_menu']
+        business.locally_sourced = data['locally_sourced']
+        business.free_range = data['free_range']
+        business.grass_fed = data['grass_fed']
+        business.no_gmo = data['no_gmo']
+        business.gluten_free = data['gluten_free']
+        business.vegan = data['vegan']
+        business.veganic = data['veganic']
+        business.composting = data['composting']
+        business.bike_parking = data['bike_parking']
+        business.leed_certified = data['leed_certified']
+        business.renewable_energy = data['renewable_energy']
+        business.put()
+
+        self.response.out.write(business.to_json())
+
 
 class RenderIndexHandler(webapp2.RequestHandler):
 
@@ -66,6 +101,8 @@ index_routes += [RedirectRoute('/<directory:%s>' % directory,
 app = webapp2.WSGIApplication(index_routes + [
     # this will use the default directory
     ('/', RenderIndexHandler, 'lander'),
+    (r'/biz/(.*)', Business),
+    ('/biz', Business),
 ], debug=True)
 app.error_handlers[404] = Webapp2HandlerAdapter(Handle404)
 app.error_handlers[500] = handle_500
