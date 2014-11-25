@@ -111,22 +111,46 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
             if (!$scope.map_made) {
                 console.log('remaking map')
                 $("#map").gmap3({
-                marker:{
-                    values: values,
+                  map:{
+                    options:{
+                    styles: [ {
+                    stylers: [ { "saturation":-100 }, { "lightness": 0 }, { "gamma": 0.5 }]},
+                    ],
+                    zoom: 12,
+                    center:[34.0219, -118.4814],
+                    scrollwheel:false,
+                    draggable: true }
+                  },
+                  marker:{
+                    values:values,
                     options:{
                       draggable: false
                     },
-                },
-                map:{
-                options:{
-                styles: [ {
-                stylers: [ { "saturation":-100 }, { "lightness": 0 }, { "gamma": 0.5 }]},
-                ],
-                zoom: 13,
-                scrollwheel:false,
-                draggable: true }
-                }
-                }); 
+                  events:{
+                      mouseover: function(marker, event, context){
+                        var map = $(this).gmap3("get"),
+                          infowindow = $(this).gmap3({get:{name:"infowindow"}});
+                        if (infowindow){
+                          infowindow.open(map, marker);
+                          infowindow.setContent(context.data);
+                        } else {
+                          $(this).gmap3({
+                            infowindow:{
+                              anchor:marker, 
+                              options:{content: context.data}
+                            }
+                          });
+                        }
+                      },
+                      mouseout: function(){
+                        var infowindow = $(this).gmap3({get:{name:"infowindow"}});
+                        if (infowindow){
+                          infowindow.close();
+                        }
+                      }
+                    }
+                  }
+                });
 
                 $scope.map_made = true
             } else {
@@ -147,22 +171,46 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
                 // }
 
                   $("#map").gmap3({
-                    marker:{
-                        values: values,
-                        options:{
-                          draggable: false
-                        },
-                    },
-                    map:{
+                  map:{
                     options:{
                     styles: [ {
                     stylers: [ { "saturation":-100 }, { "lightness": 0 }, { "gamma": 0.5 }]},
                     ],
-                    zoom: 13,
+                    zoom: 12,
+                    center:[34.0219, -118.4814],
                     scrollwheel:false,
                     draggable: true }
+                  },
+                  marker:{
+                    values:values,
+                    options:{
+                      draggable: false
+                    },
+                  events:{
+                      mouseover: function(marker, event, context){
+                        var map = $(this).gmap3("get"),
+                          infowindow = $(this).gmap3({get:{name:"infowindow"}});
+                        if (infowindow){
+                          infowindow.open(map, marker);
+                          infowindow.setContent(context.data);
+                        } else {
+                          $(this).gmap3({
+                            infowindow:{
+                              anchor:marker, 
+                              options:{content: context.data}
+                            }
+                          });
+                        }
+                      },
+                      mouseout: function(){
+                        var infowindow = $(this).gmap3({get:{name:"infowindow"}});
+                        if (infowindow){
+                          infowindow.close();
+                        }
+                      }
                     }
-                    }); 
+                  }
+                }); 
             }
     	});
    	}
