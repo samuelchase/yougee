@@ -58,7 +58,7 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
 
     $scope.set_prop = function(idx) {
         var p = $scope.attrs[idx].prop;
-        $scope.biz[p] = true;
+        $scope.biz[p] = !$scope.biz[p]
         console.log($scope.biz)
     }
 
@@ -106,6 +106,8 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
                             })
             }
 
+            console.log('Values')
+            console.log(values)
             if (!$scope.map_made) {
                 console.log('remaking map')
                 $("#map").gmap3({
