@@ -21,7 +21,8 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
     	'no_gmo':false,
     	'gluten_free':false,
     	'vegan':false,
-    	'veganic': false,
+    	// 'veganic': false,
+      'raw': false,
     	'composting':false,
     	'bike_parking':false,
     	'leed_certified':false,
@@ -49,7 +50,7 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
          'prop':'gluten_free'},
     	{'name':'Vegan',
          'prop':'vegan'},
-    	{'name':'Veganic', 'prop':'veganic'},
+    	{'name':'Raw', 'prop':'raw'},
     	{'name':'Composting', 'prop':'composting'},
     	{'name':'Bike Parking', 'prop':'bike_parking'},
     	{'name':'LEED Certified', 'prop':'leed_certified'},
@@ -60,6 +61,21 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
         var p = $scope.attrs[idx].prop;
         $scope.biz[p] = !$scope.biz[p]
         console.log($scope.biz)
+    }
+
+
+    $scope.submit_lat_lng = function(lat_lng, biz_key) {
+      // console.log('bkey')
+      // console.log(biz_key)
+      // console.log('submitting lat_lng')
+      // console.log(lat_lng)
+      var post_obj = {
+                        'lat_lng' : lat_lng,
+                        'biz_key' : biz_key 
+                      }
+      $http.post('/biz', post_obj).success(function(data) {
+        console.log('location updated');
+      });
     }
 
     $scope.submit_business = function() {
@@ -81,7 +97,8 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
                 'no_gmo':false,
                 'gluten_free':false,
                 'vegan':false,
-                'veganic': false,
+                // 'veganic': false,
+                'raw': false,
                 'composting':false,
                 'bike_parking':false,
                 'leed_certified':false,
@@ -91,145 +108,208 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
     	});
    	}
 
-    $scope.map_made = false;
-   	$scope.get_businesses = function() {
-   		$http.get('/biz/' + $scope.biz_attr).success(function(data) {
-    		console.log('getting businesses')
-    		$scope.bizes = data
-            var values = []
-            for (var i=0; i < data.length; i++) {
-                values.push({'address':data[i].address,
-                             'name':data[i].name,
-                             'data':data[i].name,
-                             'tag':'yougee',
-                             'options':{'icon': "img/rsz_greenmarker.png"}
-                            })
-            }
+    
 
+    var geocoder = new google.maps.Geocoder();
+
+    $scope.businesses_counter = 0;
+    $scope.businesses_counter_n = 5;
+
+
+    $scope.save_business_lat_lng = function (b_count) {
+        
+        for (var i=b_count; i < $scope.businesses_counter_n; i++) {
+            $scope.businesses_counter++
+            console.log('businesses_counter')
+            console.log($scope.businesses_counter)
+            console.log($scope.businesses_counter_n)
+            var dat = $scope.businesses[i];
+            // console.log(dat.key)
+            var address = dat.address
+            $scope.curr_name = dat.name;
+            $scope.location = []
+            // console.log(address)
+            // console.log(i)
+            // console.log(dat.lattitude)
+              if (dat.lattitude) {
+                console.log('has lattitude')
+              } 
+              else{
+
+                  geocoder.geocode( {'address': address}, function(dat, i){ 
+                            return (function(results, status) {
+                                console.log(status)
+                                console.log('I inside closure' + i)
+                                console.log('biz counter inside closure' +$scope.businesses_counter )
+                                console.log($scope.businesses_counter)
+
+                                  if (status == google.maps.GeocoderStatus.OK) {
+                                    console.log('address found')
+                                        var lat_lng = [results[0].geometry.location.lat(), results[0].geometry.location.lng()] ;
+                                        var biz_key = $scope.businesses[i].key;
+                                        console.log(biz_key)
+                                        $scope.submit_lat_lng(lat_lng, biz_key);
+                                    }
+                                   else {
+                                    console.log("Geocode was not successful for the following reason: " + status)
+                                    
+                                  }
+                              });
+                          } (dat, i));
+
+                    
+                }
+          }
+
+          $scope.businesses_counter_n = $scope.businesses_counter_n + 5;
+      }
+    function addInfoWindow(map, marker, message) {
+
+            var infoWindow = new google.maps.InfoWindow({
+                content: message
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.open(map, marker);
+            });
+        }
+
+    $scope.map_made = false;
+    $scope.get_businesses = function() {
+      $http.get('/biz/' + $scope.biz_attr).success(function(data) {
+        $scope.bizes = data
+        var values = []
+        setTimeout(function () {
+            $scope.$apply(function () {
+                var mapStyles = [{featureType:'water',elementType:'all',stylers:[{hue:'#d7ebef'},{saturation:-5},{lightness:54},{visibility:'on'}]},{featureType:'landscape',elementType:'all',stylers:[{hue:'#eceae6'},{saturation:-49},{lightness:22},{visibility:'on'}]},{featureType:'poi.park',elementType:'all',stylers:[{hue:'#dddbd7'},{saturation:-81},{lightness:34},{visibility:'on'}]},{featureType:'poi.medical',elementType:'all',stylers:[{hue:'#dddbd7'},{saturation:-80},{lightness:-2},{visibility:'on'}]},{featureType:'poi.school',elementType:'all',stylers:[{hue:'#c8c6c3'},{saturation:-91},{lightness:-7},{visibility:'on'}]},{featureType:'landscape.natural',elementType:'all',stylers:[{hue:'#c8c6c3'},{saturation:-71},{lightness:-18},{visibility:'on'}]},{featureType:'road.highway',elementType:'all',stylers:[{hue:'#dddbd7'},{saturation:-92},{lightness:60},{visibility:'on'}]},{featureType:'poi',elementType:'all',stylers:[{hue:'#dddbd7'},{saturation:-81},{lightness:34},{visibility:'on'}]},{featureType:'road.arterial',elementType:'all',stylers:[{hue:'#dddbd7'},{saturation:-92},{lightness:37},{visibility:'on'}]},{featureType:'transit',elementType:'geometry',stylers:[{hue:'#c8c6c3'},{saturation:4},{lightness:10},{visibility:'on'}]}];
+
+                map = new google.maps.Map(document.getElementById('targetmap'), { 
+                   //mapTypeId: google.maps.MapTypeId.ROADMAP,
+                   //disableDefaultUI: true,
+                   zoom: 4,
+                   center: new google.maps.LatLng(37.77493, -122.419416),
+                  //zoom: 4,
+                  panControl: false,
+                  zoomControl: true,
+                  scrollwheel: false,
+                  scaleControl: true,
+                  styles: mapStyles,
+                  zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.SMALL,
+                    position: google.maps.ControlPosition.RIGHT_BOTTOM
+                  }
+
+               });
+
+                $scope.map = map;
+
+              console.log('total businesses')
+              console.log(data.length)
+              console.log(data)
+              $scope.businesses = data;
+
+              for (var i=0; i < data.length; i++) {
+                  var dat = data[i];
+                  var address = dat.address
+                  $scope.curr_name = dat.name;
+                  $scope.location = []
+                  // console.log(address)
+                  // console.log(i)
+            
+
+                  if (dat.lattitude) {
+                    console.log('saved location')
+                    // console.log(dat.lattitude)
+                    var marker = new google.maps.Marker({
+                          position: new google.maps.LatLng(dat.lattitude, dat.longitude),
+                          map: map,
+                          title: $scope.curr_name,
+                          icon: "img/rsz_greenmarker.png"
+                        });
+
+                    var message = dat.name
+                    console.log('Message ' + message)
+                    addInfoWindow(map, marker, message)
+ 
+                
+                  } else {
+
+                    geocoder.geocode( {'address': address}, function(dat, i){ 
+                            return (function(results, status) {
+                                console.log(status)
+                                console.log('I inside closure' + i)
+                                console.log('biz counter inside closure' +$scope.businesses_counter )
+                                console.log($scope.businesses_counter)
+
+                                  if (status == google.maps.GeocoderStatus.OK) {
+                                     var marker = new google.maps.Marker({
+                                        position: results[0].geometry.location,
+                                        map: map,
+                                        title: dat.name,
+                                        icon: "img/rsz_greenmarker.png"
+                                      });
+
+                                        console.log('address found')
+                                        var lat_lng = [results[0].geometry.location.lat(), results[0].geometry.location.lng()] ;
+                                        var biz_key = $scope.businesses[i].key;
+                                        console.log(biz_key)
+                                        $scope.submit_lat_lng(lat_lng, biz_key);
+                                    }
+                                   else {
+                                    console.log("Geocode was not successful for the following reason: " + status)
+                                    
+                                  }
+                              });
+                          } (dat, i));
+                  
+                }
+              }
+            });
+        }, 1000);
+        
             console.log('Values')
             console.log(values)
-            if (!$scope.map_made) {
-                console.log('remaking map')
-                $("#map").gmap3({
-                  map:{
-                    options:{
-                    styles: [ {
-                    stylers: [ { "saturation":-100 }, { "lightness": 0 }, { "gamma": 0.5 }]},
-                    ],
-                    zoom: 12,
-                    center:[34.0219, -118.4814],
-                    scrollwheel:false,
-                    draggable: true }
-                  },
-                  marker:{
-                    values:values,
-                    options:{
-                      draggable: false
-                    },
-                  events:{
-                      mouseover: function(marker, event, context){
-                        var map = $(this).gmap3("get"),
-                          infowindow = $(this).gmap3({get:{name:"infowindow"}});
-                        if (infowindow){
-                          infowindow.open(map, marker);
-                          infowindow.setContent(context.data);
-                        } else {
-                          $(this).gmap3({
-                            infowindow:{
-                              anchor:marker, 
-                              options:{content: context.data}
-                            }
-                          });
-                        }
-                      },
-                      mouseout: function(){
-                        var infowindow = $(this).gmap3({get:{name:"infowindow"}});
-                        if (infowindow){
-                          infowindow.close();
-                        }
-                      }
-                    }
-                  }
-                });
-
-                $scope.map_made = true
-            } else {
-                console.log('clearing markers')
-                $("#map").gmap3('clear', 'markers');
 
 
-                // for (var i = 0; i < values.length; i++) {
-                //     console.log('adding marker')
-                //     var addm = {'action': 'addMarker',
-                //                  'address':values[i].address,
-                //                  'name':values[i].name,
-                //                  'data':values[i].name,
-                //                  'tag':'yougee',
-                //                  'options':{'icon': "img/rsz_greenmarker.png"}}
-                //     $("#map").gmap3(addm);
-                  
-                // }
+      }); 
+    }
 
-                  $("#map").gmap3({
-                  map:{
-                    options:{
-                    styles: [ {
-                    stylers: [ { "saturation":-100 }, { "lightness": 0 }, { "gamma": 0.5 }]},
-                    ],
-                    zoom: 12,
-                    center:[34.0219, -118.4814],
-                    scrollwheel:false,
-                    draggable: true }
-                  },
-                  marker:{
-                    values:values,
-                    options:{
-                      draggable: false
-                    },
-                  events:{
-                      mouseover: function(marker, event, context){
-                        var map = $(this).gmap3("get"),
-                          infowindow = $(this).gmap3({get:{name:"infowindow"}});
-                        if (infowindow){
-                          infowindow.open(map, marker);
-                          infowindow.setContent(context.data);
-                        } else {
-                          $(this).gmap3({
-                            infowindow:{
-                              anchor:marker, 
-                              options:{content: context.data}
-                            }
-                          });
-                        }
-                      },
-                      mouseout: function(){
-                        var infowindow = $(this).gmap3({get:{name:"infowindow"}});
-                        if (infowindow){
-                          infowindow.close();
-                        }
-                      }
-                    }
-                  }
-                }); 
-            }
-    	});
-   	}
-
-    $scope.get_businesses();
-
+    var map = [];
 
     $scope.filter_results = function(idx) {
         console.log('filtering')
-        $scope.biz_attr = $scope.attrs[idx].prop
+        $scope.biz_attr = $scope.attrs[idx].prop;
         $scope.get_businesses();
     }
+
+    $scope.all_businesses = function() {
+      $scope.biz_attr = 'all';
+      $scope.get_businesses()
+    }
+    $scope.all_businesses()
+
 
     $scope.radios = false
     $scope.go_on = function() {
         $scope.radios = true
     }    
 
-    				
+    $scope.codeAddress = function() {
+      var address = $scope.address;
+      console.log('Searching Address ' +address)
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          map.setZoom(10);
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          });
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
 
 
 

@@ -16,7 +16,10 @@ import models
 class Business(webapp2.RequestHandler):
     def get(self, attr):
         result = []
-        businesses = models.Business.gql('where ' + attr + '= :1', True).fetch(1000)
+        if attr == 'all':
+            businesses = models.Business.query().fetch(1000)
+        else:
+            businesses = models.Business.gql('where ' + attr + '= :1', True).fetch(1000)
         for b in businesses:
             result.append(b.to_dict())
 
@@ -24,6 +27,25 @@ class Business(webapp2.RequestHandler):
 
     def post(self):
         data = json.loads(self.request.body)
+
+        if data.get('lat_lng') != None:
+
+            biz_key = data['biz_key']
+            lat_lng = data['lat_lng']
+
+            logging.error(lat_lng)
+            logging.error(biz_key)
+
+            biz = models.Business.urlsafe_get(biz_key)
+            biz.lattitude = lat_lng[0]
+            biz.longitude = lat_lng[1]
+            biz.put()
+
+            self.response.out.write(biz.to_json())
+            return
+
+
+
         business = models.Business()
         business.name = data['name']
         business.address = data['address']
@@ -37,7 +59,8 @@ class Business(webapp2.RequestHandler):
         business.no_gmo = data['no_gmo']
         business.gluten_free = data['gluten_free']
         business.vegan = data['vegan']
-        business.veganic = data['veganic']
+        # business.veganic = data['veganic']
+        business.raw = data['raw']
         business.composting = data['composting']
         business.bike_parking = data['bike_parking']
         business.leed_certified = data['leed_certified']
