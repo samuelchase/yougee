@@ -13,6 +13,25 @@ from webapp2_extras.routes import RedirectRoute
 
 import models
 
+
+
+class DemoRequest(webapp2.RequestHandler):
+    def get(self):
+        self.response.out.write('hello')
+
+    def post(self):
+        email = self.request.get('email')
+        if email:
+            dr = models.DemoRequest.gql('where email = :1', email).get()
+            if not dr:
+                dr = models.DemoRequest()
+                dr.email = email
+                dr.put()
+            else:
+                self.response.out.write('email exists')
+        else:
+            self.response.out.write('no email found')
+
 class Business(webapp2.RequestHandler):
     def get(self, attr):
         result = []
@@ -124,6 +143,7 @@ index_routes += [RedirectRoute('/<directory:%s>' % directory,
 app = webapp2.WSGIApplication(index_routes + [
     # this will use the default directory
     ('/', RenderIndexHandler, 'lander'),
+    ('/demorequest', DemoRequest),
     (r'/biz/(.*)', Business),
     ('/biz', Business),
 ], debug=True)
