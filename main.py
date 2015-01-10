@@ -97,7 +97,7 @@ class RenderIndexHandler(webapp2.RequestHandler):
     def get(self, directory='yougee'):
         if directory == 'yougee':
             logging.warning(directory)
-            self.redirect('/yougee/index.html')
+            self.redirect('/yougee/site/index.html')
             return
 
         self.response.write('directory not found')
