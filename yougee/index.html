@@ -242,7 +242,8 @@
                             <input placeholder='Business Name' style='form-control' ng-model="biz.name" type='text' />
                             <input placeholder='Business Address' style='form-control' ng-model="biz.address" type='text' />
                             <input placeholder='Business Website' style='form-control' type='text' ng-model="biz.website"/>
-                            <input placeholder='Business Phone No' style='form-control' type='text' />
+                            <input placeholder='Business Email' style='form-control' type='text' ng-model="biz.email"/>
+                            <input placeholder='Business Phone No' style='form-control' type='text' ng-model="biz.phone"/>
                             <div><textarea placeholder='Notes' style='form-control' ng-model="biz.notes"></textarea></div>
 
 
@@ -253,6 +254,7 @@
                                     <h4><strong> Which of these apply to your business?</strong> </h4>        
                                 </div>
                             <div>
+                                {{biz}}
                                 <div ng-repeat="at in attrs">
                                     <label>
                                     <input type="checkbox" ng-model="biz[at.prop]" class="btn btn-danger" value="4"> {{at.name}} </label> <br>

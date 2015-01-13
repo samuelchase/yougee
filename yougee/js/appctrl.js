@@ -9,10 +9,14 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
     $scope.biz = {
     	'name':'',
     	'address':'',
+      'email':'',
     	'website':'',
     	'phone': '',
     	'notes':'',
 
+      'farm' : false,
+      'market': false,
+      'restaurant':false,
     	'organic':false,
     	'seasonal_menu':false,
     	'locally_sourced':false,
@@ -30,7 +34,13 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
     }
 
 
-    $scope.attrs = [{
+    $scope.attrs = [{'name': 'Farm',
+                      'prop': 'farm'},
+                    {'name':'Market',
+                     'prop': 'market'},
+                    {'name': 'Restaurant',
+                      'prop': 'restaurant'},
+                    {
                      'name':'Organic',
                      'prop':'organic'
                     },
@@ -64,6 +74,8 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
     }
 
 
+
+
     $scope.submit_lat_lng = function(lat_lng, biz_key) {
       // console.log('bkey')
       // console.log(biz_key)
@@ -79,16 +91,21 @@ angular.module('nucleusApp', ['ngAnimate', 'mgcrea.ngStrap', 'rzModule'])
     }
 
     $scope.submit_business = function() {
+      console.log($scope.biz)
     	$http.post('/biz', $scope.biz).success(function(data) {
     		console.log('submitting biz')
             $scope.radios = false;
              $scope.biz = {
                 'name':'',
                 'address':'',
+                'email':'',
                 'website':'',
                 'phone': '',
                 'notes':'',
 
+                'farm':false,
+                'market':false,
+                'restaurant':false,
                 'organic':false,
                 'seasonal_menu':false,
                 'locally_sourced':false,

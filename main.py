@@ -67,9 +67,13 @@ class Business(webapp2.RequestHandler):
 
         business = models.Business()
         business.name = data['name']
+        business.email = data['email']
         business.address = data['address']
         business.phone = data['phone']
         business.notes = data['notes']
+        business.farm = data['farm']
+        business.market = data['market']
+        business.restaurant = data['restaurant']
         business.organic = data['organic']
         business.seasonal_menu = data['seasonal_menu']
         business.locally_sourced = data['locally_sourced']
