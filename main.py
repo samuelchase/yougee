@@ -5,12 +5,8 @@ import webapp2
 import logging
 import json
 import os
-
-
 from webapp2_extras import jinja2
 from webapp2_extras.routes import RedirectRoute
-
-
 import models
 
 
@@ -34,6 +30,7 @@ class DemoRequest(webapp2.RequestHandler):
 
 class Business(webapp2.RequestHandler):
     def get(self, attr):
+        ## TODO: Query by geo to handle scale
         result = []
         if attr == 'all':
             businesses = models.Business.query().fetch(1000)
@@ -47,6 +44,7 @@ class Business(webapp2.RequestHandler):
     def post(self):
         data = json.loads(self.request.body)
 
+        # Save lat_lng passed from frontend reverse geocode
         if data.get('lat_lng') != None:
 
             biz_key = data['biz_key']
@@ -93,39 +91,27 @@ class Business(webapp2.RequestHandler):
         self.response.out.write(business.to_json())
 
 
-class RenderIndexHandler(webapp2.RequestHandler):
+class MainHandler(webapp2.RequestHandler):
 
     """Renders the single static-ish index.html that then sets up the AngularJS
-    code that powers the site. We use jinja to render it so we can include the
-    profiler from gae_mini_profiler"""
+    code that powers the site."""
     def get(self, directory='yougee'):
         if directory == 'yougee':
             logging.warning(directory)
             self.redirect('/yougee/site/index.html')
             return
 
+        if directory == 'map':
+            self.redirect('/yougee/index.html')
+            return
+
         self.response.write('directory not found')
 
 
-
-class Webapp2HandlerAdapter(webapp2.BaseHandlerAdapter):
-    def __call__(self, request, response, exception):
-        request.route_args = {}
-        request.route_args['exception'] = exception
-        handler = self.handler(request, response)
-        return handler.get()
-
-
-class Handle404(webapp2.RequestHandler):
-    def get(self):
-        self.response.write('<a href="javascript:window.history.go(-1);"><img src="/b/img/error/404.jpg" alt="Sorry, I could not find this page ;(" /></a><br/>')
-        self.response.write('Sorry, I could not find this page ;(')
-
-
-#def handle_404(request, response, exception):
-#    logging.exception(exception)
-#    response.write('Could not find this page :(')
-#    response.set_status(404)
+def handle_404(request, response, exception):
+   logging.exception(exception)
+   response.write('Could not find this page :(')
+   response.set_status(404)
 
 
 def handle_500(request, response, exception):
@@ -134,24 +120,14 @@ def handle_500(request, response, exception):
     response.set_status(500)
 
 
-directories = ('app', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'home', 'welcome', 'lander','smb_lander')
-# single slash (e.g., /g/index.html or /g/view_camp etc.)
-index_routes = [webapp2.Route('/<directory:%s>/<:.*>' % directory,
-                              RenderIndexHandler)
-                for directory in directories]
-# # just directory (e.g., /g)
-index_routes += [RedirectRoute('/<directory:%s>' % directory,
-                               redirect_to='/%s/' % directory)
-                 for directory in directories]
-
-app = webapp2.WSGIApplication(index_routes + [
+app = webapp2.WSGIApplication([
     # this will use the default directory
-    ('/', RenderIndexHandler, 'lander'),
+    ('/', MainHandler),
     ('/demorequest', DemoRequest),
     (r'/biz/(.*)', Business),
     ('/biz', Business),
 ], debug=True)
-app.error_handlers[404] = Webapp2HandlerAdapter(Handle404)
+app.error_handlers[404] = handle_404
 app.error_handlers[500] = handle_500
 
 
