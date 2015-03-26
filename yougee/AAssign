@@ -1,0 +1,37 @@
+AAssign
+
+Alice's Assignment:
+
+There are two concepts on the abstract level that will have to be implemented.
+
+1) A business:
+	A Business is a farm, market or restaurant. The usual contact information name, email etc should be accessible for any business. 
+
+2) A tag:
+	Tags are things like "vegan", "non-gmo", "organic".
+
+Every tag a business has a relationship such that for each business there is a
+set of tags which have a number of points associated with them that indicate the business' strength in that area.
+
+That is a business might have a set of tags associated as follows:
+  
+  'organic': 35 pts
+  'local': 10pts
+  'seasonal': 2pts
+
+The final proj should be built such that the following queries are possible
+with relative efficiency.
+
+1) All businesses within x miles of lat_lng
+
+2) All businesses for a certain set of Tags
+
+3) All businesses within x miles of lat_lng AND for a certain set of tags
+
+4) All businesses who names/address/website match directly by text
+
+5) All businesses within x miles that match names/address/website directly by text
+
+I believe this is more than enough functionality for the MVP.
+
+

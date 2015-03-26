@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en" class="app" ng-app='yougeeApp'>
+<head>  
+  <meta charset="utf-8" />
+  <title>Yougee Business Admin</title>
+  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="js/calendar/bootstrap_calendar.css" type="text/css" />
+  <link rel="stylesheet" href="css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/2.0.1/ng-tags-input.min.css" />
+
+  <link rel="stylesheet" href="css/icon.css" type="text/css" />
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" /> 
+  <link href='css/bootstrap-additions.css' rel='stylesheet'> 
+  <link rel="stylesheet" href="ion/ion.rangeSlider.css">
+  <link rel="stylesheet" href="ion/ion.rangeSlider.skinFlat.css">
+
+  <link rel="stylesheet" href="plugins/datepicker/datepicker.css">
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">
+
+
+
+
+  <script src="//use.typekit.net/amw1gzp.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+
+
+  <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-controller='YougeeCtrl'>
+<!-- 
+    <div class="hero-parallax parallax" style="background-image: url(img/cover1.jpg);"></div>
+
+    <div class="overlay overlay-colored-9 fadded" ng-show='!premoney'></div> -->
+<!-- 
+    <div class='fadded' ng-show='!ready' style='width:100%; height:100%; position:absolute; z-index:20000; background-color: rgba(17, 35, 17, 1);'></div>
+
+    <div class='fadded' ng-show='!ready' style='width:100%; height:100%; position:absolute; z-index:20000; background-color: rgba(0, 0, 0, 0.333);'></div>
+
+    <div style='position:absolute; z-index:30000; left:50%; text-align:center; margin-left:-160px; width:320px; margin-top:278px; padding:68px; padding-top:117px; padding-bottom:30px; background:#fff; border:1px solid #ccc; border-radius:8px' ng-show='!ready'>
+      
+      <div style='margin-top:0px; padding-bottom:78px'><span class="hidden-nav-xs tk-share-tech"><span style='font-weight:normal; font-size:27px; color:#0e4194; line-height:11px'>AD NUCLEUS<br><span style='color:#666'><small>The Bridge v1.0</small></span></div> -->
+<!--       <div style='margin-top:37px'>
+        <a class="btn btn-default" ng-cloak ng-show='ready' ng-click='premoney=true' stlye='font-size:17px;'>Start <i style='margin-top:4px; margin-left:3px' class='i i-youtube'></i></a>
+        <a style='' class="btn btn-default disabled fadded" ng-show='!ready' >Loading...</a>
+      </div> -->
+<!--     </div>
+ -->   
+
+    <section style='height:100%'>
+      <header class="bg-white header header-md navbar navbar-fixed-top-xs box-shadow">
+        <div class="navbar-header aside-md dk" style='overflow:hidden'>
+          <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+            <i class="fa fa-bars"></i>
+          </a>
+          <a href="index.html" class="navbar-brand">
+            <span class="hidden-nav-xs tk-share-tech"><span style='font-weight:normal'>Yougee Admin</span></span>
+          </a>
+          <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+            <i class="fa fa-cog"></i>
+          </a>
+        </div>
+
+        <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-search"></i></button>
+              </span>
+              <input type="text" class="form-control input-sm no-border" ng-model='search_field' placeholder="Search..."> <a class="btn btn-primary input-group-addon"><i class='hand fa fa-chevron-circle-up'></i></a>           
+            </div>
+          </div>
+        </form>
+    
+      </header>
+      <section class='vbox'>
+        <section class="hbox stretch" style='height:555px; border-bottom:1px solid #525365'>
+          <!-- .aside -->
+          <aside class="bg-black aside-md hidden-print hidden-xs" id="nav">          
+            <section >
+              <section>
+
+                <div >
+               
+              <nav class="nav-primary hidden-xs">
+
+                <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm" style='margin-top:20px'>MENU</div>
+                  <ul class="nav nav-main" data-ride="collapse">
+
+                      <li class="active">
+                        <a href="" ng-click='mypage="clientlist"' class="auto">
+                          <b class="badge bg-default pull-right"></b>
+                            <i class="fa fa-lemon-o color"></i>
+                          <span class="">Farms</span>
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="" ng-click='mypage="numbers"' class="auto">
+                          <b class="badge bg-default pull-right"></b>
+                            <i class="fa fa-truck color"></i>
+                          </i>
+                          <span class="">Markets</span>
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="" ng-click='mypage="wishlist"' class="auto">
+                          <b class="badge bg-default pull-right"></b>
+                            <i class="fa fa-spoon color"></i>
+                          <span class="">Restaurants</span>
+                        </a>
+                      </li>
+
+   <!--                    <li>
+                        <a href="" ng-click='mypage="settings"' class="auto">
+                          <i class="fa fa-paw icon">
+                          </i>
+                          <span class="">Global Settings</span>
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="" ng-click='mypage="settings"' class="auto">
+                          <i class="fa fa-paw icon">
+                          </i>
+                          <span class="">Air Traffic Control</span>
+                        </a>
+                      </li> -->
+
+                  </ul>
+
+                </nav>
+
+              </div>
+            </section>
+            
+            <footer class="footer hidden-xs no-padder text-center-nav-xs">
+              <a href="modal.lockme.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
+                <i class="i i-logout"></i>
+              </a>
+              <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs">
+                <i class="i i-circleleft text"></i>
+                <i class="i i-circleright text-active"></i>
+              </a>
+            </footer>
+          </section>
+        </aside>
+
+
+        <section id="content" style='height:100%; overflow-y:auto' class='' ng-show='mypage=="numbers"' ng-cloak>
+          <section class="hbox stretch">
+            <section class='vbox'>
+              <section class="scrollable padder" id='fullpage' style='padding:31px'> 
+                <div >
+                  <div class='row m-b-md'  >
+                      <p class="" style='margin:7px; font-size:17px'>
+                          -- CONFIDENTIAL -- 
+                      </p>
+                  </div>
+
+                  <div class='row'>
+                    <div class='col-lg-3 audience-card' style='text-align:left; width:378px; padding-top:7px'>
+                        <div class='pull-right' style='margin-top:22px; text-align:right'>
+                            <div style='color:#333'>23 Last 14 Days 
+                                <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                            </div>
+                            <div style='color:#666'>54 Last 30 Days 
+                                <span style='color:green' ng-show='false'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                <span style='color:red' ng-show='true'>(<i class='i i-arrow-down'></i> 22%)</span>
+                            </div>
+                            <div style='color:#999'>156 Last 90 Days
+                                <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                            </div>
+                        </div>
+                        <div><h1 style='font-size:33px'>212</h1></div> 
+                        <div><h4>Advertisers</h4></div>
+                    </div> 
+
+                    <div class='col-lg-3 audience-card' style='text-align:left; width:378px; padding-top:7px'>
+                        <div class='pull-right' style='margin-top:22px; text-align:right'>
+                            <div style='color:#333'>23 Last 14 Days 
+                                <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                            </div>
+                            <div style='color:#666'>54 Last 30 Days 
+                                <span style='color:green' ng-show='false'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                <span style='color:red' ng-show='true'>(<i class='i i-arrow-down'></i> 22%)</span>
+                            </div>
+                            <div style='color:#999'>156 Last 90 Days
+                                <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                            </div>
+                        </div>
+                        <div><h1 style='font-size:33px'>1,345</h1></div> 
+                        <div><h4>Flights</h4></div>
+                    </div> 
+
+                    <div class='col-lg-3 audience-card' style='text-align:left; width:378px; padding-top:7px'>
+                            <div class='pull-right' style='margin-top:22px; text-align:right'>
+                                <div style='color:#333'>$2,344 Last 14 Days 
+                                    <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                    <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                                </div>
+                                <div style='color:#666'>$8,455 Last 30 Days 
+                                    <span style='color:green' ng-show='false'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                    <span style='color:red' ng-show='true'>(<i class='i i-arrow-down'></i> 22%)</span>
+                                </div>
+                                <div style='color:#999'>$17,498 Last 90 Days
+                                    <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                    <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                                </div>
+                            </div>
+                            <div><h1 style='font-size:33px'>$24,000</h1></div> 
+                            <div><h4>Revenue</h4></div>
+                    </div>
+
+                    <div class='col-lg-3 audience-card' style='text-align:left; width:378px; padding-top:7px'>
+                        <div class='pull-right' style='margin-top:22px; text-align:right'>
+                            <div style='color:#333'>23 Last 14 Days 
+                                <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                            </div>
+                            <div style='color:#666'>54 Last 30 Days 
+                                <span style='color:green' ng-show='false'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                <span style='color:red' ng-show='true'>(<i class='i i-arrow-down'></i> 22%)</span>
+                            </div>
+                            <div style='color:#999'>156 Last 90 Days
+                                <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                            </div>
+                        </div>
+                        <div><h1 style='font-size:33px'>786</h1></div> 
+                        <div><h4>Audiences</h4></div>
+                    </div> 
+
+                    <div class='col-lg-3 audience-card' style='text-align:left; width:378px; padding-top:7px'>
+                        <div class='pull-right' style='margin-top:22px; text-align:right'>
+                            <div style='color:#333'>23 Last 14 Days 
+                                <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                            </div>
+                            <div style='color:#666'>54 Last 30 Days 
+                                <span style='color:green' ng-show='false'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                <span style='color:red' ng-show='true'>(<i class='i i-arrow-down'></i> 22%)</span>
+                            </div>
+                            <div style='color:#999'>156 Last 90 Days
+                                <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                            </div>
+                        </div>
+                        <div><h1 style='font-size:33px'>1,234</h1></div> 
+                        <div><h4>Creatives</h4></div>
+                    </div> 
+
+                    <div class='col-lg-3 audience-card' style='text-align:left; width:378px; padding-top:7px'>
+                            <div class='pull-right' style='margin-top:22px; text-align:right'>
+                                <div style='color:#333'>$2,344 Last 14 Days 
+                                    <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                    <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                                </div>
+                                <div style='color:#666'>$8,455 Last 30 Days 
+                                    <span style='color:green' ng-show='false'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                    <span style='color:red' ng-show='true'>(<i class='i i-arrow-down'></i> 22%)</span>
+                                </div>
+                                <div style='color:#999'>$17,498 Last 90 Days
+                                    <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                    <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                                </div>
+                            </div>
+                            <div><h1 style='font-size:33px'>$6,000</h1></div> 
+                            <div><h4>Inv Cost</h4></div>
+                    </div>
+                    <div class='col-lg-3 audience-card' style='text-align:left; width:378px; padding-top:7px'>
+                            <div class='pull-right' style='margin-top:22px; text-align:right'>
+                                <div style='color:#333'>$2,344 Last 14 Days 
+                                    <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                    <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                                </div>
+                                <div style='color:#666'>$8,455 Last 30 Days 
+                                    <span style='color:green' ng-show='false'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                    <span style='color:red' ng-show='true'>(<i class='i i-arrow-down'></i> 22%)</span>
+                                </div>
+                                <div style='color:#999'>$17,498 Last 90 Days
+                                    <span style='color:green' ng-show='true'>(<i class='i i-arrow-up-right'></i> 22%)</span>
+                                    <span style='color:red' ng-show='false'>(<i class='i i-arrow-down'></i> 22%)</span>
+                                </div>
+                            </div>
+                            <div><h1 style='font-size:33px'>$4,500</h1></div> 
+                            <div><h4>Profits</h4></div>
+                    </div>       
+
+                  </div>
+                </div>
+              </section>
+            </section>
+          </section>
+        </section>
+
+
+        <section id="content" class='' ng-show='mypage=="clientlist"' ng-cloak>
+          <section class="hbox stretch">
+            <section class='vbox'>
+              <section class="scrollable padder" style='padding:31px'>  
+                <section>      
+
+                  <div class="row" >
+                    <div class="col-md-12">
+                      <div class="panel widget" style='margin-bottom:0px'>
+
+                        <div class="panel-body  table-responsive">
+                          <table class="table table-bordered table-striped no-m">
+                            <thead>
+                              <tr>
+                                <th style="background:#fff">Name</th>
+                                <th style="background:#fff">Address</th>
+                                <th style="background:#fff">Email</th>
+                                <th style="background:#fff">Website</th>
+                                <th style="background:#fff">Phone</th>
+                                <th style="background:#fff">Add Tag</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                              <tr ng-repeat='biz in businesses'>
+                                <td>
+                                  {{$index + 1}}
+                                  {{' ' + biz.name}}
+                                </td>
+                                <td>{{biz.address}}</a></td>
+                                <td> {{biz.email}}
+                                <td>{{biz.website}}</td>
+                                <td>{{biz.phone}}</td>
+                                <td><input placeholder='Add Tag' ng-model='add_tag()' class='form-control' />
+                                <a class="btn btn-primary input-group-addon"><i class='hand fa fa-chevron-circle-up'></i></a></td>
+                                
+                              </tr>
+
+                          </tbody>
+                        </table>
+<!--                     <ul class="pagination">
+                      <li><a href="#">«</a></li>
+                      <li class="active"><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">5</a></li>
+                      <li><a href="#">»</a></li>
+                    </ul> -->
+                  </div>
+                </div>
+                <!-- Panel Widget --> 
+              </div>
+              <!-- col-md-12 --> 
+            </div>
+
+
+            <div id='userinfo' style='margin-top:33px; padding:17px; background:#ffffff' ng-show='show_list.length>0' class='fadded'>
+              
+              <div class="row" style='margin-bottom:11px'>
+                  <div class="col-xs-8 lead" > 
+                      <i ng-click='scroll_to_top()' class='hand fa fa-chevron-circle-up' style='margin-right:7px'></i> {{current_user.contact_email}}
+                  </div>
+              </div>
+
+              <div style='border: 1px solid #eee'>
+                    
+                    <div class="row" >
+                      
+                      <div class="col-sm-6">
+                        <div class="panel b-a" style='margin-bottom:0px'>
+
+                          <div class="row m-n">
+
+                            <div class="col-md-7 b-b b-r" style='min-height:400px'>
+
+                              <div class="panel widget light-widget">
+                                <div class="panel-body">
+
+                                  <div class="row mgbt-xs-10" style=''>
+                                    <div class="col-xs-4 text-right"> <strong>Status:</strong> </div>
+                                    <div class="col-xs-8"> 
+                                      <span ng-show='!current_user.revoke_date && !current_user.approved' class="label label-info">Waitlist</span>
+                                      <span ng-show='current_user.revoke_date && !current_user.approved' class="label label-danger">Revoked</span>
+                                      <span ng-show='current_user.approved' class="label label-success">Approved</span>
+                                      <span ng-show='!current_user.approved' class="hand label label-success" ng-tooltip title='Approve User' ng-click='approve_current_user()'> 
+                                        <i ng-show='approving' class='fa fa-circle-o-notch fa-spin'></i>
+                                        <i ng-show='!approving' class='fa fa-check'></i>
+                                      </span>
+                                    </div>
+                                  </div>
+
+                                  <div class="row  mgbt-xs-10" style=''>
+                                    <hr>
+                                    <div class="col-xs-4 text-right"> <strong>Invited:</strong> </div>
+                                    <div class="col-xs-8"> {{current_user.created}} </div>
+                                  </div>
+
+                                  <div class="row  mgbt-xs-10" style='' ng-show='current_user.revoke_date'>
+                                    <hr>
+                                    <div class="col-xs-4 text-right"> <strong>Revoked:</strong> </div>
+                                    <div class="col-xs-8"> {{current_user.revoke_date}} </div>
+
+                                  </div>
+
+                                  <div class="row  mgbt-xs-10" style='' ng-show='current_user.revoke_date'>
+                                    <hr>
+                                    <div class="col-xs-4 text-right"> <strong>Reason:</strong> </div>
+                                    <div class="col-xs-8"> {{current_user.revoke_reason}} </div>
+                                  </div>
+
+                                  <div class="row  mgbt-xs-10" style='' ng-show='current_user.approved'>
+
+                                    <hr>
+                                    <div class="col-xs-4 text-right"> <strong>Revoke:</strong> </div>
+                                    <div class="col-xs-8">                                      
+                                      <div><textarea placeholder='Reason for Revocation (Please Be Descriptive!)' ng-model='revoke_reason' class='form-control' ></textarea>
+                                        <div style = 'margin-top:11px' class='pull-right'>
+                                          <a class='btn btn-danger' ng-click='revoke_membership($index)'>Revoke</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+                                </div>
+
+                              </div>
+                            </div>
+
+
+
+
+                            <div class="col-md-5 b-b" ng-show='current_user.approved'>
+                              <a href="#" class="block padder-v hover">
+                                <span class="i-s i-s-2x pull-left m-r-sm">
+                                  <i class="i i-hexagon2 i-s-base text-success-lt hover-rotate"></i>
+                                  <i class="i i-users2 i-sm text-white"></i>
+                                </span>
+                                <span class="clear">
+                                  <span class="h4 block m-t-xs text-success">Appoved</span>
+                                  <small class="text-muted text-u-c">{{current_user.date_approved}}</small>
+                                </span>
+                              </a>
+                            </div>
+
+                            <div class="col-md-5 b-b" ng-show='!current_user.approved'>
+                              <a href="#" class="block padder-v hover">
+                                <span class="i-s i-s-2x pull-left m-r-sm">
+                                  <i class="i i-hexagon2 i-s-base text-danger hover-rotate"></i>
+                                  <i class="i i-plus2 i-1x text-white"></i>
+                                </span>
+                                <span class="clear">
+                                  <span class="h3 block m-t-xs text-danger">{{current_user.number_in_queue+1}}</span>
+                                  <small class="text-muted text-u-c">PLACE IN LINE</small>
+                                </span>
+                              </a>
+                            </div>
+
+                            <div class="col-md-5 b-b" ng-show='!current_user.approved'>
+                              <a href="#" class="block padder-v hover">
+                                <span class="i-s i-s-2x pull-left m-r-sm">
+                                  <i class="i i-hexagon2 i-s-base text-success-lt hover-rotate"></i>
+                                  <i class="i i-users2 i-sm text-white"></i>
+                                </span>
+                                <span class="clear">
+                                  <span class="h3 block m-t-xs text-success">{{current_user.days_waiting+1}}</span>
+                                  <small class="text-muted text-u-c">DAYS WAITING</small>
+                                </span>
+                              </a>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+                  </div>
+                </div>
+              </div>
+
+<!--                 </section>
+              </section>
+ -->
+
+
+            </div>
+
+          </section>
+
+
+        </section>
+
+        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+      </section>
+    </section>
+  </section>
+</section>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular.min.js"></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular-animate.js'></script> 
+<script src='js/angular-strap.min.js'></script>  
+<script src='js/angular-strap.tpl.min.js'></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/2.0.1/ng-tags-input.min.js"></script>
+
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.js"></script>
+<!-- App -->
+
+
+
+<script src="js/app.js"></script>  
+
+<!-- <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="js/maps/gmaps.js"></script> -->
+<!-- <script src="js/maps/demo.js"></script>
+ -->
+<script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
+<script src="js/charts/sparkline/jquery.sparkline.min.js"></script>
+<script src="js/charts/flot/jquery.flot.min.js"></script>
+<script src="js/charts/flot/jquery.flot.tooltip.min.js"></script>
+<script src="js/charts/flot/jquery.flot.spline.js"></script>
+<script src="js/charts/flot/jquery.flot.pie.min.js"></script>
+<script src="js/charts/flot/jquery.flot.resize.js"></script>
+<script src="js/charts/flot/jquery.flot.grow.js"></script>
+<script src="js/charts/flot/jquery.flot.time.js"></script>
+<script src="js/charts/flot/demo.js"></script>
+
+<script src="plugins/moment.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+
+<script src="js/calendar/bootstrap_calendar.js"></script>
+<script src="js/calendar/demo.js"></script>
+<script src="ion/ion.rangeSlider.min.js"></script>
+
+<script src="js/sortable/jquery.sortable.js"></script>
+<script src="js/app.plugin.js"></script>
+
+
+<script src='js/segments.js'></script>
+<!-- <script src='/adnucleus/api_config.js'></script>
+ --><script src='js/adminctrl.js'></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyDsIM8o2P-zsYF3j5TcySsra3bF7bP8pfE"></script>
+<script src='js/reporting.js'></script>
+
+
+
+
+
+
+</body>
+</html>
